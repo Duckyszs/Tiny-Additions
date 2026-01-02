@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "tinyadditions",
+	"version": "${version}",
+	"name": "Tiny Additions Mod",
+	"description": "A mod that adds that feel vanilla, but aren't in the game",
+	"authors": [
+		"__Cmd_"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/tinyadditions/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.Cmd.tinyadditions.TinyAdditionsMod"
+		],
+		"fabric-datagen": [
+			"net.Cmd.tinyadditions.TinyAdditionsModDataGenerator"
+		],
+		"client": [
+			"net.Cmd.tinyadditions.TinyAdditionsClient"
+		]
+	},
+	"mixins": [
+		"tinyadditions.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
