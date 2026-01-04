@@ -3,13 +3,13 @@
 	"id": "tinyadditions",
 	"version": "${version}",
 	"name": "Tiny Additions Mod",
-	"description": "A mod that adds that feel vanilla, but aren't in the game",
+	"description": "A mod that adds things that feel vanilla, but aren't in the game",
 	"authors": [
 		"__Cmd_"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Duckyszs/Tiny-Additions"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/tinyadditions/icon.png",
