@@ -1,9 +1,7 @@
 package net.Cmd.tinyadditions.entity.custom;
 
-import net.minecraft.entity.AnimationState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.Cmd.tinyadditions.entity.ModEntities;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -17,6 +15,9 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,9 +36,9 @@ public class FrigidEntity extends ZombieEntity {
         this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 35.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.goalSelector.add(6, new AvoidSunlightGoal(this));
-        this.goalSelector.add(7, new WanderAroundFarGoal(this, (double)1.0F));
+        this.goalSelector.add(7, new WanderAroundFarGoal(this, (double) 1.0F));
 
-        this.goalSelector.add(2, new ZombieAttackGoal(this, (double)1.0F, false));
+        this.goalSelector.add(2, new ZombieAttackGoal(this, (double) 1.0F, false));
         this.targetSelector.add(1, new RevengeGoal(this));
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.add(3, new ActiveTargetGoal<>(this, MerchantEntity.class, false));
@@ -57,7 +58,7 @@ public class FrigidEntity extends ZombieEntity {
     }
 
     public static DefaultAttributeContainer.Builder createAtribute() {
-        return MobEntity.createMobAttributes()
+        return ZombieEntity.createZombieAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 20)
                 .add(EntityAttributes.GENERIC_ARMOR, 2)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3)
@@ -66,7 +67,7 @@ public class FrigidEntity extends ZombieEntity {
     }
 
     private void setupAnimationStates() {
-        if (this.idleAnimationTimeout <= 0 ) {
+        if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = 40;
             this.idleAnimationState.start(this.age);
         } else {
@@ -78,12 +79,20 @@ public class FrigidEntity extends ZombieEntity {
     public void tick() {
         super.tick();
 
-        if(this.getWorld().isClient()) {
+        if (this.getWorld().isClient()) {
             this.setupAnimationStates();
         }
     }
 
-    public @Nullable PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return null;
+    public static boolean canSpawn(EntityType<FrigidEntity> type, ServerWorldAccess world,
+                                   SpawnReason reason, BlockPos pos, Random random) {
+
+        if (world.toServerWorld().isDay()) {
+            return false;
+        }
+
+        return ZombieEntity.canSpawnInDark(type, world, reason, pos, random);
     }
 }
+
+
