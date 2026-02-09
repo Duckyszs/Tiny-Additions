@@ -3,7 +3,8 @@
 	"package": "net.Cmd.tinyadditions.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"PolarBearRideMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
