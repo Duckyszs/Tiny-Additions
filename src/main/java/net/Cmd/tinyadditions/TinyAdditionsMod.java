@@ -2,6 +2,7 @@ package net.Cmd.tinyadditions;
 
 import net.Cmd.tinyadditions.entity.ModEntities;
 import net.Cmd.tinyadditions.entity.custom.FrigidEntity;
+import net.Cmd.tinyadditions.entity.custom.FrigidPolarBearEntity;
 import net.Cmd.tinyadditions.item.ModItems;
 import net.Cmd.tinyadditions.world.gen.ModEntitySpawns;
 import net.fabricmc.api.ModInitializer;
@@ -20,5 +21,6 @@ public class TinyAdditionsMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModEntitySpawns.addSpawns();
 		FabricDefaultAttributeRegistry.register(ModEntities.FRIGID, FrigidEntity.createAtribute());
+		FabricDefaultAttributeRegistry.register(ModEntities.FRIGID_POLAR_BEAR, FrigidPolarBearEntity.createAtribute());
 	}
 }

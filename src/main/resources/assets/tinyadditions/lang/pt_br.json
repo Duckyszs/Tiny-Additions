@@ -1,5 +1,7 @@
 {
   "item.tinyadditions.frigid_spawn_egg": "Ovo Gerador de Frígido",
+  "item.tinyadditions.frigid_polar_bear_spawn_egg": "Ovo Gerador de Urso Polar Frígido",
 
-  "entity.tinyadditions.frigid": "Frígido"
+  "entity.tinyadditions.frigid": "Frígido",
+  "entity.tinyadditions.frigid_polar_bear": "Urso Polar Frígido"
 }
