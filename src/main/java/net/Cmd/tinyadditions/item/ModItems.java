@@ -4,6 +4,7 @@ import net.Cmd.tinyadditions.TinyAdditionsMod;
 import net.Cmd.tinyadditions.item.custom.FrigidPolarBearSpawnEggItem;
 import net.Cmd.tinyadditions.item.custom.FrigidSpawnEggItem;
 import net.Cmd.tinyadditions.item.custom.PinkQuartzItem;
+import net.Cmd.tinyadditions.item.custom.RubyItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -21,6 +22,9 @@ public class ModItems {
 
     public static final Item PINK_QUARTZ = registerItem("pink_quartz",
             new PinkQuartzItem(new Item.Settings()));
+
+    public static final Item RUBY = registerItem("ruby",
+            new RubyItem(new Item.Settings()));
 
 
 //Criação da Method
@@ -41,6 +45,7 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries ->
         {
             entries.add(PINK_QUARTZ);
+            entries.add(RUBY);
         });
     }
 }
